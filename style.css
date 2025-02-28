@@ -8,14 +8,6 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
-.contenedor {
-  background: #f8bbd0;
-  padding: 20px;
-  border-radius: 10px;
-  margin: auto;
-  width: 450px;
-}
 .contenedor-index {
   display: flex;
   flex-direction: column;
@@ -26,12 +18,25 @@ body {
   background: #f06292;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 25px;
   width: 100%;
   cursor: pointer;
   border-radius: 10px;
   margin-top: 15px;
 }
+.boton-link:hover {
+  box-shadow: 0 4px 16px rgb(170, 202, 214);
+  transition: all 0.2s ease;
+}
+
+.contenedor {
+  background: #f8bbd0;
+  padding: 20px;
+  border-radius: 10px;
+  margin: auto;
+  width: 450px;
+}
+
 a {
   text-decoration: none;
 }
