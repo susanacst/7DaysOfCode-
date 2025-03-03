@@ -1,0 +1,196 @@
+var listaFrutas = [];
+var listaLacteos = [];
+var listaCongelados = [];
+var listaSnacks = [];
+var listaBebidas = [];
+
+let agregarAlimento = true;
+//valida lista por lista
+function listaVacia() {
+  if (
+    listaFrutas.length > 0 ||
+    listaLacteos.length > 0 ||
+    listaCongelados.length > 0 ||
+    listaSnacks.length > 0 ||
+    listaBebidas.length > 0
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+//valida y regresa los productos de las listas
+function obtenerProductos(lista) {
+  if (lista.length > 0) {
+    let productosLista = "";
+    for (let index = 0; index < lista.length; index++) {
+      productosLista += index + " - " + lista[index] + "\n";
+    }
+    return productosLista;
+  } else {
+    return false;
+  }
+}
+
+while (agregarAlimento) {
+  let respuestaUsuario = prompt(
+    "¿Deseas agregar o eliminar un alimento a tu lista de compras? \n(1)Agregar  \n(2)Eliminar \n(3)Ver lista actual \n(4)Salir"
+  );
+  switch (respuestaUsuario) {
+    case "1":
+      //agregar
+      let alimento = prompt("¿Qué alimento deseas agregar?");
+      let categoriaAlimento = prompt(
+        "¿A qué categoría pertenece? (1)Frutas (2)Lácteos (3)Congelados (4)Snacks (5)Bebidas"
+      );
+
+      switch (categoriaAlimento) {
+        case "1":
+          listaFrutas.push(alimento);
+          alert(`${alimento} añadido a la categoría de Frutas.`);
+          break;
+        case "2":
+          listaLacteos.push(alimento);
+          alert(`${alimento} añadido a la categoría de Lácteos.`);
+          break;
+        case "3":
+          listaCongelados.push(alimento);
+          alert(`${alimento} añadido a la categoría de Congelados.`);
+
+          break;
+        case "4":
+          listaSnacks.push(alimento);
+          alert(`${alimento} añadido a la categoría de Snacks.`);
+
+          break;
+        case "5":
+          listaBebidas.push(alimento);
+          alert(`${alimento} añadido a la categoría de Bebidas.`);
+
+          break;
+        default:
+          alert("Categoría no válida.");
+      }
+      break;
+    case "2":
+      //eliminar
+      let confirmarLista = listaVacia();
+      if (confirmarLista) {
+        let categoriaEliminar = prompt(
+          "¿De qué categoría deseas eliminar? \n(1)Frutas \n(2)Lácteos \n(3)Congelados \n(4)Snacks \n(5)Bebidas"
+        );
+        let productosLista;
+        switch (categoriaEliminar) {
+          case "1":
+            productosLista = obtenerProductos(listaFrutas);
+            if (productosLista) {
+              let productoEliminar = prompt(
+                "Ingresa el número del producto a eliminar \n\n" +
+                  productosLista
+              );
+              let productoEliminado = listaFrutas[productoEliminar];
+              listaFrutas.splice(productoEliminar, 1);
+              alert(
+                `${productoEliminado} se ha eliminado de la categoría de Frutas.`
+              );
+            } else {
+              alert("No hay productos agregados en esta lista.");
+            }
+            break;
+          case "2":
+            productosLista = obtenerProductos(listaLacteos);
+            if (productosLista) {
+              let productoEliminar = prompt(
+                "¿Qué producto deseas eliminar? " + productosLista
+              );
+              let productoEliminado = listaLacteos[productoEliminar];
+              listaLacteos.splice(productoEliminar, 1);
+              alert(
+                `${productoEliminado} se ha eliminado de la categoría de Lácteos.`
+              );
+            } else {
+              alert("No hay productos agregados en esta lista.");
+            }
+            break;
+          case "3":
+            productosLista = obtenerProductos(listaCongelados);
+            if (productosLista) {
+              let productoEliminar = prompt(
+                "¿Qué producto deseas eliminar? " + productosLista
+              );
+              let productoEliminado = listaCongelados[productoEliminar];
+              listaCongelados.splice(productoEliminar, 1);
+              alert(
+                `${productoEliminado} se ha eliminado de la categoría de Congelados.`
+              );
+            } else {
+              alert("No hay productos agregados en esta lista.");
+            }
+            break;
+          case "4":
+            productosLista = obtenerProductos(listaSnacks);
+            if (productosLista) {
+              let productoEliminar = prompt(
+                "¿Qué producto deseas eliminar? " + productosLista
+              );
+              let productoEliminado = listaSnacks[productoEliminar];
+              listaSnacks.splice(productoEliminar, 1);
+              alert(
+                `${productoEliminado} se ha eliminado de la categoría de Snacks.`
+              );
+            } else {
+              alert("No hay productos agregados en esta lista.");
+            }
+            break;
+          case "5":
+            productosLista = obtenerProductos(listaBebidas);
+            if (productosLista) {
+              let productoEliminar = prompt(
+                "¿Qué producto deseas eliminar? " + productosLista
+              );
+              let productoEliminado = listaBebidas[productoEliminar];
+              listaBebidas.splice(productoEliminar, 1);
+              alert(
+                `${productoEliminado} se ha eliminado de la categoría de Bebidas.`
+              );
+            } else {
+              alert("No hay productos agregados en esta lista.");
+            }
+            break;
+        }
+      } else {
+        alert("No tienes ningún producto agregado.");
+      }
+      break;
+    case "3":
+      if (listaVacia()) {
+        alert(
+          "Lista de compras:\n\n" +
+            (listaFrutas.length > 0
+              ? "Frutas: " + listaFrutas.join(", ") + "\n"
+              : "") +
+            (listaLacteos.length > 0
+              ? "Lácteos: " + listaLacteos.join(", ") + "\n"
+              : "") +
+            (listaCongelados.length > 0
+              ? "Congelados: " + listaCongelados.join(", ") + "\n"
+              : "") +
+            (listaSnacks.length > 0
+              ? "Snacks: " + listaSnacks.join(", ") + "\n"
+              : "") +
+            (listaBebidas.length > 0
+              ? "Bebidas: " + listaBebidas.join(", ") + "\n"
+              : "")
+        );
+      } else {
+        alert("No hay nada agregado aún.");
+      }
+      break;
+    case "4":
+      agregarAlimento = false;
+      break;
+    default:
+      alert("Ingresa una opción válida.");
+      break;
+  }
+}
